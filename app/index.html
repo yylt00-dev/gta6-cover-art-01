@@ -1,0 +1,94 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Vice Cover Studio — GTA-style cover art maker</title>
+<link rel="stylesheet" href="./style.css">
+</head>
+<body>
+<header class="topbar">
+  <div class="brand"><span class="brand-mark">VC</span><h1>Vice Cover Studio</h1></div>
+  <p class="tagline">Turn your photos into a Vice City-style poster cover. Offline, free, yours — your photos never leave your machine.</p>
+</header>
+<main class="app">
+  <aside class="controls" id="controls">
+    <section class="group" aria-label="Photos">
+      <h2>1 · Photos</h2>
+      <label class="upload">Add photos from your machine
+        <input id="photoFiles" type="file" accept="image/*" multiple>
+      </label>
+      <div class="library" id="library" aria-label="Photo library"></div>
+      <p class="hint">Click a photo to put it in the selected panel. “Fill all” uses it in every panel.</p>
+      <button id="fillAll" type="button">Fill all panels with selected photo</button>
+    </section>
+
+    <section class="group" aria-label="Layout">
+      <h2>2 · Layout</h2>
+      <div class="choices" id="layoutChoices" role="radiogroup" aria-label="Poster layout"></div>
+    </section>
+
+    <section class="group" aria-label="Colour grade">
+      <h2>3 · Colour grade</h2>
+      <div class="choices" id="gradeChoices" role="radiogroup" aria-label="Colour grade"></div>
+    </section>
+
+    <section class="group" aria-label="Caption">
+      <h2>4 · Caption</h2>
+      <label>Title
+        <input id="titleInput" type="text" maxlength="48" value="Vice City Nights">
+      </label>
+      <label>Subtitle
+        <input id="subtitleInput" type="text" maxlength="60" value="A story in neon">
+      </label>
+      <div class="row">
+        <label>Lettering
+          <select id="captionStyle">
+            <option value="gradient">Sunset gradient</option>
+            <option value="solid">Solid white</option>
+            <option value="outline">White outline</option>
+            <option value="neon">Neon glow</option>
+          </select>
+        </label>
+        <label>Position
+          <select id="captionPosition">
+            <option value="bottom">Bottom</option>
+            <option value="top">Top</option>
+            <option value="center">Centre</option>
+          </select>
+        </label>
+      </div>
+      <label>Title size <span id="captionSizeValue">100%</span>
+        <input id="captionSize" type="range" min="60" max="160" value="100">
+      </label>
+    </section>
+
+    <section class="group" aria-label="Selected panel">
+      <h2>5 · Selected panel</h2>
+      <p class="hint" id="panelHint">Click a panel in the preview to select it, then drag the photo to move it.</p>
+      <label>Zoom <span id="zoomValue">100%</span>
+        <input id="zoom" type="range" min="100" max="300" value="100">
+      </label>
+      <button id="resetCrop" type="button">Reset this panel’s crop</button>
+    </section>
+
+    <section class="group" aria-label="Export">
+      <h2>6 · Export PNG</h2>
+      <div class="exports">
+        <button id="exportSquare" type="button">Square · 1080 × 1080</button>
+        <button id="exportPortrait" type="button">Portrait · 1080 × 1350</button>
+        <button id="exportWide" type="button">Wide · 1920 × 1080</button>
+      </div>
+      <p class="hint">The preview follows the size you export. Click a size above to preview it, then export.</p>
+      <div class="sizes" id="sizeChoices" role="radiogroup" aria-label="Preview size"></div>
+      <p id="status" role="status"></p>
+    </section>
+  </aside>
+
+  <section class="stage">
+    <canvas id="cover" width="1080" height="1080" aria-label="Cover preview"></canvas>
+  </section>
+</main>
+<script type="module" src="./src/main.js"></script>
+</body>
+</html>
